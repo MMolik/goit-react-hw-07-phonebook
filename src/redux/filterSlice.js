@@ -1,18 +1,11 @@
+// src/filterSlice.js
 import { createSlice } from '@reduxjs/toolkit';
-
-// Funkcja do aktualizacji localStorage
-const updateLocalStorage = (filter) => {
-  localStorage.setItem('filter', filter);
-};
 
 const filterSlice = createSlice({
   name: 'filter',
-  initialState: JSON.parse(localStorage.getItem('filter')) || '',
+  initialState: '',
   reducers: {
-    setFilter: (state, action) => {
-      state = action.payload;
-      updateLocalStorage(action.payload);
-    },
+    setFilter: (state, action) => action.payload,
   },
 });
 
