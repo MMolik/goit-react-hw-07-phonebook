@@ -1,46 +1,55 @@
-// Form/Form.jsx
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import css from './Form.module.css';
 
-const Form = ({ addContact }) => {
+const Form = ({ onSubmit }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const handleSubmit = event => {
-    event.preventDefault();
-    addContact({ name, number });
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+  };
+
+  const handleNumberChange = (e) => {
+    setNumber(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit(name, number);
     setName('');
     setNumber('');
   };
 
   return (
     <form className={css.form} onSubmit={handleSubmit}>
-      <label>
+      <label className={css.label}>
         Name
         <input
           type="text"
+          name="name"
           value={name}
-          onChange={e => setName(e.target.value)}
+          onChange={handleNameChange}
           required
         />
       </label>
-      <label>
+      <label className={css.label}>
         Number
         <input
-          type="text"
+          type="tel"
+          name="number"
           value={number}
-          onChange={e => setNumber(e.target.value)}
+          onChange={handleNumberChange}
           required
         />
       </label>
-      <button type="submit">Add Contact</button>
+      <button type="submit" className={css.button}>Add contact</button>
     </form>
   );
 };
 
 Form.propTypes = {
-  addContact: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
 };
 
 export default Form;
