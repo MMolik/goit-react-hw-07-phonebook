@@ -1,4 +1,3 @@
-// filterSlice.js
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
@@ -25,13 +24,13 @@ const filterSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchFilters.pending, (state) => {
-        // Tutaj możesz dodać odpowiednie akcje, gdy żądanie jest w trakcie wykonywania
+    
       })
       .addCase(fetchFilters.fulfilled, (state, action) => {
-        // Tutaj możesz dodać odpowiednie akcje, gdy żądanie zakończyło się sukcesem
+      
       })
       .addCase(fetchFilters.rejected, (state) => {
-        // Tutaj możesz dodać odpowiednie akcje, gdy żądanie zakończyło się niepowodzeniem
+    
       });
   },
 });
